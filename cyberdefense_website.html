@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberDefense – Difenditi nel mondo digitale</title>
+    <style>
+        :root {
+            --primary-color: #00c8ff;
+            --secondary-color: #00ffb3;
+            --dark-color: #121212;
+            --light-color: #eeffff;
+            --accent-color: #3d6a7c;
+            --terminal-bg: rgba(0, 25, 25, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #001c2e, #003456);
+            box-shadow: 0 4px 30px rgba(0, 200, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 3px 0;
+            transition: 0.4s;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 5%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1280/720') center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 200, 255, 0.1), rgba(0, 255, 179, 0.1));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-color);
+            box-shadow: 0 4px 15px rgba(0, 200, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 200, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 200, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Sezioni principali */
+        .section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        /* Intro Sezione */
+        .intro-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .terminal {
+            flex: 1;
+            background-color: var(--terminal-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background-color: #ff5f56;
+        }
+
+        .dot-yellow {
+            background-color: #ffbd2e;
+        }
+
+        .dot-green {
+            background-color: #27c93f;
+        }
+
+        .terminal-title {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-color);
+            opacity: 0.7;
+        }
+
+        .terminal-content {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--light-color);
+        }
+
+        .terminal-line {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .terminal-command {
+            color: var(--primary-color);
+        }
+
+        .terminal-output {
+            color: var(--light-color);
+            margin-left: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Card Section */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.8), rgba(0, 20, 30, 0.9));
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 200, 255, 0.2);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card-content {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(0, 200, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+
+        .read-more span {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover span {
+            transform: translateX(5px);
+        }
+
+        /* Feature section */
+        .features {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 6rem 5%;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.6), rgba(0, 20, 30, 0.8));
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .feature-icon {
+            min-width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Protezione Sezione */
+        .protection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .protection-item {
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.6), rgba(0, 20, 30, 0.8));
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .protection-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .protection-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .protection-item h3 i {
+            font-size: 1.5rem;
+        }
+
+        .protection-item ul {
+            list-style: none;
+            margin-left: 1.5rem;
+        }
+
+        .protection-item li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .protection-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #001c2e, #00111d);
+            padding: 3rem 5% 1rem;
+            border-top: 1px solid rgba(0, 200, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-col p {
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-credit {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-credit a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .intro-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 1.5rem;
+                right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .feature {
+                flex-direction: column;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animazioni */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fade-in 0.8s ease-out forwards;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Aggiunte per pagina Minacce */
+        .threat-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .threat-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.6), rgba(0, 20, 30, 0.8));
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .threat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .threat-icon {
+            min-width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .threat-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .threat-content p {
+            margin-bottom: 1rem;
+        }
+
+        .threat-examples {
+            background-color: rgba(0, 200, 255, 0.05);
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        .threat-examples h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Stili pagina Come Proteggersi */
+        .best-practices {
+            margin: 3rem 0;
+        }
+
+        .practice-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .practice-card {
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.6), rgba(0, 20, 30, 0.8));
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .practice-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .practice-icon {
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .practice-title h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .practice-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .practice-steps li {
+            counter-increment: step-counter;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .practice-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .security-tools {
+            margin: 4rem 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.6), rgba(0, 20, 30, 0.8));
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Active page */
+        body.home .nav-home,
+        body.threats .nav-threats,
+        body.protection .nav-protection {
+            color: var(--primary-color);
+        }
+
+        body.home .nav-home::after,
+        body.threats .nav-threats::after,
+        body.protection .nav-protection::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="home">
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="logo-icon">🛡️</i>
+                <span class="logo-text">CyberDefense</span>
+            </a>
+            <div class="menu-toggle" id="mobileMenu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="nav-home active">Home</a></li>
+                    <li><a href="minacce.html" class="nav-threats">Minacce comuni</a></li>
+                    <li><a href="protezione.html" class="nav-protection">Come proteggersi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sezione Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Difenditi nel mondo digitale</h1>
+                <p>Scopri le migliori pratiche di sicurezza informatica per proteggere i tuoi dati e la tua privacy nel mondo digitale. Il nostro obiettivo è renderti più consapevole e informato sui rischi del cyberspazio.</p>
+                <div class="cta-buttons">
+                    <a href="#intro" class="btn btn-primary">Scopri di più</a>
+                    <a href="protezione.html" class="btn btn-secondary">Come proteggersi</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Introduzione -->
+        <section class="section" id="intro">
+            <div class="section-title">
+                <h2>Cos'è la Cybersecurity</h2>
+            </div>
+            <div class="intro-content fade-in">
+                <div class="intro-text">
+                    <h3>La protezione nell'era digitale</h3>
+                    <p>La cybersecurity, o sicurezza informatica, è l'insieme di tecnologie, processi e pratiche progettate per proteggere reti, dispositivi, programmi e dati da attacchi, danni o accessi non autorizzati.</p>
+                    <p>In un mondo sempre più connesso, la protezione dei nostri dati personali e delle infrastrutture digitali diventa fondamentale. La cybersecurity non è solo una questione tecnica, ma un aspetto cruciale della nostra vita quotidiana.</p>
+                    <p>Nel panorama attuale, caratterizzato da minacce in continua evoluzione, essere informati e adottare buone pratiche di sicurezza è la prima linea di difesa contro gli attacchi informatici.</p>
+                </div>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <div class="terminal-title">cybersecurity.sh</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span>
+                            <span class="terminal-command">scan vulnerabilities</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Analyzing system security...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Checking for software vulnerabilities...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Analyzing network traffic...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Checking password strength...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span>
+                            <span class="terminal-command">generate security_report</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Security vulnerabilities detected!</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">Recommendation: Update security protocols</span>
+                            <span class="terminal-cursor"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione White Hat Hacker -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Il ruolo del White Hat Hacker</h2>
+            </div>
+            <div class="cards-container fade-in">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">🔍</div>
+                        <h3>Chi è un White Hat Hacker?</h3>
+                        <p>I White Hat Hacker, o hacker etici, sono professionisti della sicurezza informatica che utilizzano le loro competenze per migliorare la sicurezza dei sistemi, identificando vulnerabilità prima che possano essere sfruttate da malintenzionati.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Scopri di più <span>→</span></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">💼</div>
+                        <h3>Cosa fanno?</h3>
+                        <p>Conducono test di penetrazione, analisi di vulnerabilità, audit di sicurezza e altre attività che aiutano le organizzazioni a identificare e correggere le debolezze nei loro sistemi prima che vengano sfruttate.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Scopri di più <span>→</span></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">🛠️</div>
+                        <h3>Perché sono importanti?</h3>
+                        <p>Nel complesso panorama della sicurezza informatica, i White Hat Hacker rappresentano una linea di difesa essenziale contro le minacce digitali, aiutando a creare un ambiente online più sicuro per tutti.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Scopri di più <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Caratteristiche -->
+        <section class="features">
+            <div class="features-container">
+                <div class="section-title">
+                    <h2>Perché la Cybersecurity è importante</h2>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>Protezione dei dati personali</h3>
+                        <p>In un'epoca in cui condividiamo così tanti dati personali online, dalle informazioni bancarie ai dettagli medici, la cybersecurity diventa essenziale per proteggere la nostra privacy e identità digitale. Le violazioni dei dati possono avere conseguenze devastanti, dal furto d'identità alle perdite finanziarie.</p>
+                    </div>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">🏢</div>
+                    <div class="feature-content">
+                        <h3>Salvaguardia delle aziende</h3>
+                        <p>Per le aziende, un attacco informatico può significare perdite economiche significative, danni alla reputazione e interruzioni operative. La cybersecurity protegge non solo i dati sensibili dell'azienda ma anche quelli dei clienti, mantenendo la fiducia e rispettando le normative sulla protezione dei dati.</p>
+                    </div>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-content">
+                        <h3>Sicurezza delle infrastrutture critiche</h3>
+                        <p>Le infrastrutture critiche come le reti elettriche, i sistemi di trasporto e gli ospedali dipendono sempre più da sistemi digitali. Un attacco informatico a questi sistemi potrebbe avere conseguenze catastrofiche sulla sicurezza pubblica e sulla stabilità nazionale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione CTA -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Inizia a proteggerti oggi</h2>
+            </div>
+            <div class="protection-grid fade-in">
+                <div class="protection-item">
+                    <h3><i>🔒</i> Password sicure</h3>
+                    <p>Utilizza password complesse e uniche per ogni account importante.</p>
+                    <ul>
+                        <li>Usa combinazioni di lettere, numeri e simboli</li>
+                        <li>Evita informazioni personali facilmente indovinabili</li>
+                        <li>Considera l'uso di un password manager</li>
+                    </ul>
+                </div>
+                <div class="protection-item">
+                    <h3><i>🔄</i> Aggiornamenti regolari</h3>
+                    <p>Mantieni sempre aggiornati i tuoi dispositivi e software.</p>
+                    <ul>
+                        <li>Attiva gli aggiornamenti automatici quando possibile</li>
+                        <li>Non rimandare l'installazione di patch di sicurezza</li>
+                        <li>Verifica regolarmente gli aggiornamenti disponibili</li>
+                    </ul>
+                </div>
+                <div class="protection-item">
+                    <h3><i>🛡️</i> Autenticazione a due fattori</h3>
+                    <p>Aggiungi un ulteriore livello di protezione ai tuoi account.</p>
+                    <ul>
+                        <li>Attivala per email, social network e conti bancari</li>
+                        <li>Usa app autenticatore invece degli SMS quando possibile</li>
+                        <li>Conserva in modo sicuro i codici di backup</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="protezione.html" class="btn btn-primary">Scopri tutti i consigli</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>CyberDefense</h4>
+                    <p>Il nostro obiettivo è educare e informare sulle migliori pratiche di cybersecurity, aiutandoti a navigare in sicurezza nel mondo digitale.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Collegamenti rapidi</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="minacce.html">Minacce comuni</a></li>
+                        <li><a href="protezione.html">Come proteggersi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Risorse</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Glossario</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-credit">
+                <p>Realizzato da <a href="https://highmark.it" target="_blank">Marco N.</a> per PCTO Vallauri 2024/2025 - Tutti i diritti riservati</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => bar.classList.toggle('active'));
+        });
+
+        // Animazione elementi al caricamento
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(element);
+            });
+        });
+
+        // Terminale animato
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminal = document.querySelector('.terminal-content');
+            if (terminal) {
+                const lines = terminal.querySelectorAll('.terminal-line');
+                
+                lines.forEach((line, index) => {
+                    line.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        line.style.transition = 'opacity 0.3s ease-out';
+                        line.style.opacity = '1';
+                    }, index * 600);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
