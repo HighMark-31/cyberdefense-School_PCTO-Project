@@ -1,3 +1,4 @@
+/* Settings palette colori principali  - Non usato a scuola ma con conoscenze personali */
 :root {
     --primary-color: #00c8ff;
     --secondary-color: #00ffb3;
@@ -6,7 +7,7 @@
     --accent-color: #3d6a7c;
     --terminal-bg: rgba(0, 25, 25, 0.9);
 }
-
+/* Tutto il resto del CSS serve per renderizzare lo stile moderno e le piccole animazioni inseriti - in questa pagina c'è anche il css della "console" preso spunto da siti in cui l' avevo vista */
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
 header {
     background: linear-gradient(135deg, #001c2e, #003456);
     box-shadow: 0 4px 30px rgba(0, 200, 255, 0.2);
@@ -106,7 +106,6 @@ nav a.active::after {
     border-radius: 3px;
 }
 
-/* Hero Section */
 .hero {
     min-height: 80vh;
     display: flex;
@@ -195,7 +194,6 @@ nav a.active::after {
     transform: translateY(-3px);
 }
 
-/* Sezioni principali */
 .section {
     padding: 6rem 5%;
     max-width: 1400px;
@@ -230,7 +228,6 @@ nav a.active::after {
     border-radius: 3px;
 }
 
-/* Intro Sezione */
 .intro-content {
     display: flex;
     gap: 3rem;
@@ -326,7 +323,6 @@ nav a.active::after {
     opacity: 0.8;
 }
 
-/* Footer */
 footer {
     background: linear-gradient(135deg, #001c2e, #00111d);
     padding: 3rem 5% 1rem;
