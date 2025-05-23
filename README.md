@@ -10,7 +10,7 @@ Ha lo scopo di informare e sensibilizzare gli studenti sull'importanza della sic
 - `proteggersi.html`: Come proteggersi online
 - `disclaimer.html`: Disclaimer informativo
 - `css/`: CSS per la visualizzazione estetica
-
+- `js/`: JavaScript per la visualizzazione dinamica del disclaimer
 ## Anteprima online
 
 Il sito è disponibile a questo link:  
